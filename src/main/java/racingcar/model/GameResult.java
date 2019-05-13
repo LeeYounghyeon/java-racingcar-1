@@ -17,19 +17,17 @@ public class GameResult {
         return car.comparePosition(maxDistance);
     }
 
-    public static List<String> checkMaxPosition(Car car, List<String> winners, int maxDistance) {
+    public static void checkMaxPosition(Car car, List<String> winners, int maxDistance) {
         if (!car.matchPosition(maxDistance).equals("")) {
             winners.add(car.matchPosition(maxDistance));
         }
-
-        return winners;
     }
 
     private static List<String> getWinners(List<Car> cars, int maxDistance) {
         List<String> winners = new ArrayList<>();
 
         for (Car car : cars) {
-            winners = checkMaxPosition(car, winners, maxDistance);
+            checkMaxPosition(car, winners, maxDistance);
         }
 
         return winners;

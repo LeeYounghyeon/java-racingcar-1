@@ -44,7 +44,7 @@ public class GameResultTest {
         carList.add(new Car("crong", 4));
 
         for (Car cars : carList) {
-            winner = gameResult.checkMaxPosition(cars, winner, maxDistance);
+            gameResult.checkMaxPosition(cars, winner, maxDistance);
         }
 
         assertThat(String.join(",", winner)).isEqualTo("pobi,honux");
