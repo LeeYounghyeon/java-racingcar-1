@@ -7,8 +7,10 @@ import racingcar.view.InputView;
 import racingcar.view.ResultView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 public class RacingGame {
     private final int MAX_BOUND = 10;
@@ -28,13 +30,9 @@ public class RacingGame {
 
     private List<Car> makeCarContents() {
         String[] name = InputView.inputName();
-        List<Car> cars = new ArrayList<>();
-
-        for (String carName : name) {
-            cars.add(new Car(carName));
-        }
-
-        return cars;
+        return Arrays.stream(name)
+                .map(Car::new)
+                .collect(Collectors.toList());
     }
 
     private int inputNumber() {
