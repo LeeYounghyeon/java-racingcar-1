@@ -28,7 +28,7 @@ public class GameResultTest {
         carList.add(new Car("crong", 5));
 
         for (Car car : carList) {
-            maxDistance = gameResult.getMaxDistance(car, maxDistance);
+            maxDistance = gameResult.compareDistance(car, maxDistance);
         }
 
         assertThat(maxDistance).isEqualTo(5);

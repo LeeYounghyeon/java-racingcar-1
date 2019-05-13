@@ -6,16 +6,14 @@ import java.util.List;
 public class GameResult {
 
     public static List<String> racingResult(List<Car> cars) {
-        List<String> winners = new ArrayList<>();
         int maxDistance = 0;
 
         maxDistance = getMaxDistance(cars, maxDistance);
-        winners = getWinners(cars, winners, maxDistance);
 
-        return winners;
+        return getWinners(cars, maxDistance);
     }
 
-    public static int getMaxDistance(Car car, int maxDistance) {
+    public static int compareDistance(Car car, int maxDistance) {
         return car.comparePosition(maxDistance);
     }
 
@@ -27,16 +25,19 @@ public class GameResult {
         return winners;
     }
 
-    private static List<String> getWinners(List<Car> cars, List<String> winners, int maxDistance) {
+    private static List<String> getWinners(List<Car> cars, int maxDistance) {
+        List<String> winners = new ArrayList<>();
+
         for (Car car : cars) {
             winners = checkMaxPosition(car, winners, maxDistance);
         }
+
         return winners;
     }
 
     private static int getMaxDistance(List<Car> cars, int maxDistance) {
         for (Car car : cars) {
-            maxDistance = getMaxDistance(car, maxDistance);
+            maxDistance = compareDistance(car, maxDistance);
         }
 
         return maxDistance;
