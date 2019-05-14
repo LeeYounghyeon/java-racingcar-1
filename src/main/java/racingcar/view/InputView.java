@@ -3,13 +3,14 @@ package racingcar.view;
 import racingcar.constant.MessageConstants;
 
 import java.util.*;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class InputView {
     private static final int MINIMUM_PLAYER = 1;
     private static final int NAME_LENGTH = 5;
     private static final Scanner SCANNER = new Scanner(System.in);
-    private static final String PATTERN = "^[0-9]$";
+    private static final Pattern PATTERN = Pattern.compile("^[0-9]$");
 
     public static String[] inputName() {
         System.out.println(MessageConstants.INPUT_CARNAME);
@@ -112,11 +113,12 @@ public class InputView {
 
     private static boolean hasCharacter(String inputNumber) {
         char[] inputChar = inputNumber.toCharArray();
+        Matcher matcher = PATTERN.matcher(inputNumber);
 
         if (inputChar[0] == '-') {
             return false;
         }
-        if (!Pattern.matches(PATTERN, inputNumber)) {
+        if (!matcher.find()) {
             System.err.println(MessageConstants.ERROR_INPUT_CHAR);
             return true;
         }
