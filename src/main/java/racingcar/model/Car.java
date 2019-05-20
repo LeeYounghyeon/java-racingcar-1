@@ -7,6 +7,7 @@ import java.util.Objects;
 
 public class Car {
     private final int FOWARD_NUM = 4;
+    private final int MAX_NAME_LENGTH = 5;
 
     private String name;
     private int position;
@@ -43,7 +44,7 @@ public class Car {
         return position;
     }
 
-    public String matchPosition(int position) {
+    public String getMatchName(int position) {
         if (this.position == position) {
             return this.name;
         }
@@ -62,7 +63,7 @@ public class Car {
             throw new IllegalArgumentException();
         }
 
-        if (name.length() > 5) {
+        if (name.length() > MAX_NAME_LENGTH) {
             throw new IllegalArgumentException();
         }
     }

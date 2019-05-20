@@ -30,7 +30,8 @@ public class RacingGame {
     }
 
     public static List<String> getWinner(List<Car> cars) {
-        return GameResult.racingResult(cars);
+        GameResult gameResult = new GameResult();
+        return gameResult.racingResult(cars);
     }
 
     private static int getRandomNumber() {
